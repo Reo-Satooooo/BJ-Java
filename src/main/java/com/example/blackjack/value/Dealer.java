@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class Dealer {
 
     private String name;
-    private ArrayList<Card> cards;
+    private ArrayList<Card> cards = new ArrayList<>();
     private int sum;
 
-    public Dealer(){
+    public Dealer(Deck deck){
         this.name = "ディーラー";
-
-        Deck deck = new Deck();
 
         // とりあえずsumに数字を入れていく仕様
         Card card1 = deck.drawCard();
@@ -33,8 +31,7 @@ public class Dealer {
 
     private void SumHandCard(){
         sum = 0;
-        ArrayList<Card> cardArrayList = new ArrayList<>();
-        for (Card card : cardArrayList){
+        for (Card card : cards){
             int cardNum = card.checkNumber();
             if(cardNum >= 11){
                 cardNum = 10;
@@ -44,6 +41,18 @@ public class Dealer {
                 sum += cardNum;
             }
         }
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public ArrayList<Card> showHandCard(){
+        return cards;
+    }
+
+    public int getSum(){
+        return sum;
     }
 
 }

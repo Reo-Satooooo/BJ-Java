@@ -11,7 +11,7 @@ public class Deck {
     public Deck(){
         String[] marks = new String[]{"ダイヤ","スペード","ハート","クローバー"};
         ArrayList<Card> cardArrayList = new ArrayList<>();
-        for (int i = 1; i <= marks.length; i++){
+        for (int i = 0; i < marks.length; i++){
             String mark = marks[i];
             for (int j = 1; j <= 13; j++){
                 Card card = new Card(mark,j);
@@ -33,8 +33,9 @@ public class Deck {
 
     public Card drawCard(){
         int remainCard = checkCardRemain();
-        Random rand = new Random(remainCard);
-        int num = rand.nextInt();
+//        System.out.println(remainCard);
+        Random rand = new Random();
+        int num = rand.nextInt(remainCard);
         Card card = cardArrayList.get(num);
         cardArrayList.remove(num);
         return card;

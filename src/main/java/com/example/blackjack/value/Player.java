@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class Player {
 
     private String name;
-    private ArrayList<Card> cards;
+    private ArrayList<Card> cards = new ArrayList<>();
     private int sum;
 
-    public Player(String name){
+    public Player(String name, Deck deck){
         this.name = name;
-
-        Deck deck = new Deck();
 
         // とりあえずsumに数字を入れていく仕様
         Card card1 = deck.drawCard();
@@ -27,8 +25,7 @@ public class Player {
 
     private void SumHandCard(){
         sum = 0;
-        ArrayList<Card> cardArrayList = new ArrayList<>();
-        for (Card card : cardArrayList){
+        for (Card card : cards){
             int cardNum = card.checkNumber();
             if(cardNum >= 11){
                 cardNum = 10;
@@ -38,6 +35,25 @@ public class Player {
                 sum += cardNum;
             }
         }
+    }
+
+    public Card DrawAddCard(Deck deck){
+        Card additionalCard = deck.drawCard();
+        cards.add(additionalCard);
+        SumHandCard();
+        return additionalCard;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public ArrayList<Card> showHandCard(){
+        return cards;
+    }
+
+    public int getSum(){
+        return sum;
     }
 
 }
