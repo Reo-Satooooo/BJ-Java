@@ -104,6 +104,11 @@ public class GameManager {
         Jugement jugement = new Jugement();
         String resultText = jugement.jugement(player,dealer);
 
+        // インスタンスを無効化
+        this.deck = null;
+        this.player = null;
+        this.dealer = null;
+
         replyText = String.join("\n", replyText, "", resultText);
         return new Result(replyText);
     }
