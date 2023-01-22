@@ -1,6 +1,7 @@
 package com.example.blackjack.repository;
 
 import com.example.blackjack.value.Card;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -21,7 +22,7 @@ public class PlayerCardRepository {
 
     public List<Card> readPlayerHands(){
         // sql
-        String sql = "select card_mark, card_number " + "from player_hand ";
+        String sql = "select CARD_MARK, CARD_NUMBER " + "from PLAYER_HAND ";
 
         // queryForListメソッドでSQLを実行し、結果MapのListで受け取る。
         List<Map<String, Object>> cards = jdbc.queryForList(sql);
@@ -38,15 +39,15 @@ public class PlayerCardRepository {
 
     public void insertPlayerHands(Card card){
         // sql
-        String sql = "insert into player_hand " + "(card_mark, card_number) " + "values(?,?)";
+        String sql = "insert into PLAYER_HAND " + "(CARD_MARK, CARD_NUMBER) " + "values (?,?)";
         String cardMark = card.checkMark();
-        int cardNumber = card.checkNumber();
+        Integer cardNumber = card.checkNumber();
         jdbc.update(sql, cardMark, cardNumber);
     }
 
     public void deletePlayerHands(){
         // sql
-        String sql = "delete from player_hand ";
+        String sql = "delete from PLAYER_HAND ";
 
         jdbc.update(sql);
     }

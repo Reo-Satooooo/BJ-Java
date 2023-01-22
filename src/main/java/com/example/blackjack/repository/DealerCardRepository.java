@@ -21,7 +21,7 @@ public class DealerCardRepository {
 
     public List<Card> readDealerHands(){
         // sql
-        String sql = "select card_mark, card_number " + "from dealer_hand ";
+        String sql = "select CARD_MARK, CARD_NUMBER " + "from DEALER_HAND ";
 
         // queryForListメソッドでSQLを実行し、結果MapのListで受け取る。
         List<Map<String, Object>> cards = jdbc.queryForList(sql);
@@ -38,15 +38,15 @@ public class DealerCardRepository {
 
     public void insertDealerHands(Card card){
         // sql
-        String sql = "insert into dealer_hand " + "(card_mark, card_number) " + "values(?,?)";
+        String sql = "insert into DEALER_HAND " + "(CARD_MARK, CARD_NUMBER) " + "values(?,?)";
         String cardMark = card.checkMark();
-        int cardNumber = card.checkNumber();
+        Integer cardNumber = card.checkNumber();
         jdbc.update(sql, cardMark, cardNumber);
     }
 
     public void deleteDealerHands(){
         // language = sql
-        String sql = "delete from dealer_hand ";
+        String sql = "delete from DEALER_HAND ";
 
         jdbc.update(sql);
     }

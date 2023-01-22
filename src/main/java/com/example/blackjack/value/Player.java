@@ -1,5 +1,8 @@
 package com.example.blackjack.value;
 
+import com.example.blackjack.repository.PlayerCardRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -15,12 +18,14 @@ public class Player {
         Card card1 = deck.drawCard();
         cards.add(card1);
 
+
         Card card2 = deck.drawCard();
         cards.add(card2);
 
         SumHandCard();
 
         // ToDo:cardsの中身をDBに記録する
+
     }
 
     private void SumHandCard(){

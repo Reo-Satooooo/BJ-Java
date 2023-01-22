@@ -2,9 +2,6 @@ package com.example.blackjack;
 
 import com.example.blackjack.replier.*;
 import com.example.blackjack.service.GameManager;
-import com.example.blackjack.value.Dealer;
-import com.example.blackjack.value.Deck;
-import com.example.blackjack.value.Player;
 import com.linecorp.bot.model.event.FollowEvent;
 import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
